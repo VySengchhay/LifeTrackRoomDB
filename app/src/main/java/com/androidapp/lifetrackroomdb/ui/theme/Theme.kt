@@ -1,6 +1,5 @@
-package com.androidapp.lifetrackroomdb.ui.theme
+package com.example.lifetrackpro.ui.theme
 
-import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
@@ -10,49 +9,109 @@ import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
+import com.androidapp.lifetrackroomdb.ui.theme.typography
 
 private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    secondary = PurpleGrey80,
-    tertiary = Pink80
+    primary = LifeTrackPrimaryLight,
+    onPrimary = LifeTrackOnPrimary,
+    primaryContainer = LifeTrackPrimaryDark,
+    onPrimaryContainer = LifeTrackPrimaryContainer,
+
+    secondary = LifeTrackSecondaryLight,
+    onSecondary = LifeTrackOnSecondary,
+    secondaryContainer = LifeTrackSecondaryDark,
+    onSecondaryContainer = LifeTrackSecondaryContainer,
+
+    tertiary = LifeTrackAccentCyan,
+    onTertiary = White,
+    tertiaryContainer = LifeTrackSurfaceVariantDark,
+    onTertiaryContainer = LifeTrackTextPrimaryDark,
+
+    background = LifeTrackBackgroundDark,
+    onBackground = LifeTrackTextPrimaryDark,
+
+    surface = LifeTrackSurfaceDark,
+    onSurface = LifeTrackTextPrimaryDark,
+
+    surfaceVariant = LifeTrackSurfaceVariantDark,
+    onSurfaceVariant = LifeTrackTextSecondaryDark,
+
+    error = StatusError,
+    onError = White,
+    errorContainer = PriorityUrgent,
+    onErrorContainer = StatusErrorContainer,
+
+    outline = LifeTrackBorderDark,
+    outlineVariant = LifeTrackDividerDark,
+
+    inverseSurface = LifeTrackSurface,
+    inverseOnSurface = LifeTrackTextPrimary,
+    inversePrimary = LifeTrackPrimary
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
-    secondary = PurpleGrey40,
-    tertiary = Pink40
+    primary = LifeTrackPrimary,
+    onPrimary = LifeTrackOnPrimary,
+    primaryContainer = LifeTrackPrimaryContainer,
+    onPrimaryContainer = LifeTrackPrimaryDark,
 
-    /* Other default colors to override
-    background = Color(0xFFFFFBFE),
-    surface = Color(0xFFFFFBFE),
-    onPrimary = Color.White,
-    onSecondary = Color.White,
-    onTertiary = Color.White,
-    onBackground = Color(0xFF1C1B1F),
-    onSurface = Color(0xFF1C1B1F),
-    */
+    secondary = LifeTrackSecondary,
+    onSecondary = LifeTrackOnSecondary,
+    secondaryContainer = LifeTrackSecondaryContainer,
+    onSecondaryContainer = LifeTrackSecondaryDark,
+
+    tertiary = LifeTrackAccentCyan,
+    onTertiary = White,
+    tertiaryContainer = StatusInfoContainer,
+    onTertiaryContainer = LifeTrackPrimaryDark,
+
+    background = LifeTrackBackground,
+    onBackground = LifeTrackTextPrimary,
+
+    surface = LifeTrackSurface,
+    onSurface = LifeTrackTextPrimary,
+
+    surfaceVariant = LifeTrackSurfaceVariant,
+    onSurfaceVariant = LifeTrackTextSecondary,
+
+    error = StatusError,
+    onError = White,
+    errorContainer = StatusErrorContainer,
+    onErrorContainer = PriorityUrgent,
+
+    outline = LifeTrackBorder,
+    outlineVariant = LifeTrackDivider,
+
+    inverseSurface = LifeTrackSurfaceDark,
+    inverseOnSurface = LifeTrackTextPrimaryDark,
+    inversePrimary = LifeTrackPrimaryLight
 )
 
 @Composable
-fun LifeTrackRoomDBTheme(
+fun LifeTrackProTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
-    // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
+    dynamicColor: Boolean = false,
     content: @Composable () -> Unit
 ) {
     val colorScheme = when {
         dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
             val context = LocalContext.current
-            if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
+
+            if (darkTheme) {
+                dynamicDarkColorScheme(context)
+            } else {
+                dynamicLightColorScheme(context)
+            }
         }
 
         darkTheme -> DarkColorScheme
+
         else -> LightColorScheme
     }
 
     MaterialTheme(
         colorScheme = colorScheme,
-        typography = Typography,
+        typography = typography,
         content = content
     )
 }

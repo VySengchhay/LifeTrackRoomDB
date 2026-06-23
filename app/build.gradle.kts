@@ -8,12 +8,12 @@ plugins {
 
 android {
     namespace = "com.androidapp.lifetrackroomdb"
-    compileSdk = 36
+    compileSdk = 37
 
     defaultConfig {
         applicationId = "com.androidapp.lifetrackroomdb"
         minSdk = 29
-        targetSdk = 36
+        targetSdk = 37
         versionCode = 1
         versionName = "1.0"
 
@@ -49,8 +49,8 @@ dependencies {
     implementation(libs.androidx.compose.material3)
 
 
-    implementation(libs.androidx.ui)
-    implementation(libs.androidx.navigation.runtime.ktx)
+    implementation(libs.androidx.lifecycle.viewmodel.navigation3)
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
 
     // Network
     implementation(libs.retrofit)
@@ -60,19 +60,10 @@ dependencies {
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.coil.compose)
 
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
-    androidTestImplementation(platform(libs.androidx.compose.bom))
-    androidTestImplementation(libs.androidx.compose.ui.test.junit4)
-    debugImplementation(libs.androidx.compose.ui.tooling)
-    debugImplementation(libs.androidx.compose.ui.test.manifest)
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.4")
-
     implementation(libs.androidx.navigation3.ui)
     implementation(libs.androidx.navigation3.runtime)
 
-//    DI
+    // DI
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
     implementation(libs.androidx.hilt.lifecycle.viewmodel.compose)

@@ -9,11 +9,13 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.lifecycleScope
-import com.androidapp.lifetrackroomdb.presentation.Test
+import com.androidapp.lifetrackroomdb.core.navigation.LifeTrackNavigation
 import com.example.lifetrackpro.ui.theme.LifeTrackProTheme
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         val splashScreen = installSplashScreen()
@@ -21,7 +23,7 @@ class MainActivity : ComponentActivity() {
         var isCheck = true
         lifecycleScope.launch {
             if (isCheck) {
-                delay(3000)
+                delay(1000)
                 isCheck = false
             }
         }
@@ -35,7 +37,7 @@ class MainActivity : ComponentActivity() {
             LifeTrackProTheme(
                 dynamicColor = false
             ) {
-                Test()
+                LifeTrackNavigation()
             }
         }
     }
